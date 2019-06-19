@@ -1,7 +1,6 @@
 $(document).ready(function() {
   let historyValue = new Set();
   $("#myInput").focus();
-
   $("button").click(function() {
     var res = $("#myInput").val();
 
@@ -9,13 +8,13 @@ $(document).ready(function() {
       historyValue.add(res);
       $("#result").removeClass("w3-text-red");
       $("#result").text(res);
-      $("#myInput").val("");
       $("#history").append(
         '<span class="w3-padding-small"> ' + res + " </span>"
       );
     } else {
       $("#result").addClass("w3-text-red");
     }
+    $("#myInput").val("");
     $("#myInput").focus();
   });
 
@@ -27,14 +26,15 @@ $(document).ready(function() {
       if (res !== "" && !historyValue.has(res)) {
         historyValue.add(res);
         $("#result").removeClass("w3-text-red");
+        $("#myInput").val("");
         $("#result")
           .text(res)
           .fadeIn();
-        $("#myInput").val("");
         $("#history").append(
           '<span class="w3-padding-small "> ' + res + " </span>"
         );
       } else {
+        $("#myInput").val("");
         $("#result").addClass("w3-text-red");
       }
     }
